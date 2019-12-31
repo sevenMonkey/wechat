@@ -66,13 +66,13 @@ func (js *Js) GetTicket() (ticketStr string, err error) {
 	js.GetJsAPITicketLock().Lock()
 	defer js.GetJsAPITicketLock().Unlock()
 
-	//先从cache中取
-	jsAPITicketCacheKey := fmt.Sprintf("jsapi_ticket_%s", js.AppID)
-	val := js.Cache.Get(jsAPITicketCacheKey)
-	if val != nil {
-		ticketStr = val.(string)
-		return
-	}
+// 	//先从cache中取
+// 	jsAPITicketCacheKey := fmt.Sprintf("jsapi_ticket_%s", js.AppID)
+// 	val := js.Cache.Get(jsAPITicketCacheKey)
+// 	if val != nil {
+// 		ticketStr = val.(string)
+// 		return
+// 	}
 	var ticket resTicket
 	ticket, err = js.getTicketFromServer()
 	if err != nil {
